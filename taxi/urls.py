@@ -1,8 +1,8 @@
 """urls da api"""
 
-from django.urls import path
+from rest_framework.routers import SimpleRouter
 from .views import TaxiViewSet
 
-urlpatterns = [
-    path('taxi', TaxiViewSet.as_view(), name='taxi-list')
-]
+router = SimpleRouter()
+router.register('taxi' , TaxiViewSet)
+
