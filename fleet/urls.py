@@ -7,7 +7,6 @@ Including another URLconf
 from django.urls import path,include
 from taxi.urls import router
 
-
 urlpatterns = [
     path('', include(router.urls))
 ]
