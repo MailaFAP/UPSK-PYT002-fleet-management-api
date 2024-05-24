@@ -1,8 +1,7 @@
 """Módulo contendo os serializers para a API da aplicação taxi"""
 
 from rest_framework import serializers
-from .models import Taxi
-from .models import Trajectories
+from .models import Taxi , Trajectories
 
 class TaxiSerializer(serializers.ModelSerializer):
     """Serializador para objetos da classe Taxi do modelo Taxi"""
@@ -12,7 +11,7 @@ class TaxiSerializer(serializers.ModelSerializer):
         incluídos na serialização. """
         model = Taxi
         fields = '__all__'
-        
+
 class TaxiLocationSerializer(serializers.ModelSerializer):
     """Serializador para objetos da classe Trajectories do modelo Trajectories"""
     class Meta:
