@@ -17,9 +17,6 @@ class Taxi(models.Model):
         """classe para ordenar os dados de acordo com o id do taxi"""
         ordering = ['id']
 
-    def __str__(self):
-        return f"Taxi {self.id}: {self.plate}"
-
 
 class Trajectories(models.Model):
     """ Modelo para armazenar informações sobre trajetórias de táxis. Campos:
@@ -29,9 +26,9 @@ class Trajectories(models.Model):
     date: data em que a trajetória foi registrada
     longitude: longitude do local da trajetória
     latitude: latitude do local da trajetória """
-    
+
     id = models.AutoField('id', primary_key=True)
-    taxi_id = models.IntegerField('taxi_id')
+    taxi_id = models.ForeignKey(Taxi , on_delete=models.CASCADE)
     date = models.DateField('date')
     longitude = models.FloatField('longitude')
     latitude = models.FloatField('latitude')
