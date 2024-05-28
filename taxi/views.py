@@ -30,8 +30,8 @@ class TaxiLocationView(viewsets.ModelViewSet):
     serializer_class = TaxiLocationSerializer
     queryset = Trajectories.objects.all()
 
-    @action(detail=True, methods= ['GET'])
-    def taxi_location(self, request, pk=None):
+    #@action(detail=True, methods= ['GET'])
+    def list(self, request, pk=None):
  
         """
         Este método recebe o ID do táxi e a data como parâmetros e retorna as informações de 
@@ -47,10 +47,12 @@ class TaxiLocationView(viewsets.ModelViewSet):
         forem encontrados.
         """
  
-        taxi_id = pk
+        taxi = request.GET.get('taxi')
         date = request.GET.get('date')
-
-        trajectories = Trajectories.objects.filter(taxi_id=taxi_id, date=date)
+        print(taxi)
+        print(date)
+        trajectories = Trajectories.objects.filter(taxi=taxi, date__date=date)
+        print(trajectories.query)
 
         if not trajectories.exists():
             return Response({'error': 'Trajetórias não encontradas para o taxi na data especificada'}, status=404)

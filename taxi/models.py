@@ -28,8 +28,8 @@ class Trajectories(models.Model):
     latitude: latitude do local da trajetória """
 
     id = models.AutoField('id', primary_key=True)
-    taxi_id = models.ForeignKey(Taxi , on_delete=models.CASCADE)
-    date = models.DateField('date')
+    taxi = models.ForeignKey(Taxi , on_delete=models.CASCADE)
+    date = models.DateTimeField('date')
     longitude = models.FloatField('longitude')
     latitude = models.FloatField('latitude')
 
